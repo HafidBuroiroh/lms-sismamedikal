@@ -2,36 +2,59 @@
 @section('title', '- Kebijakan')
 @section('main')
 <div class="container my-5">
-    <section id="privacy-policy">
-            <h2>Kebijakan Privasi</h2>
-            <p>Kami berkomitmen untuk melindungi privasi pasien kami. Informasi pribadi yang Anda berikan akan digunakan sesuai dengan kebijakan privasi kami dan tidak akan dibagikan kepada pihak ketiga tanpa izin Anda.</p>
+    <div class="row">
+        <div class="col-12 col-md-4">
+            <h2>Kebijakan Rumah Sakit</h2>
             <ul>
-                <li>Pengumpulan Informasi: Kami mengumpulkan informasi pribadi untuk keperluan medis dan administratif.</li>
-                <li>Penyimpanan Informasi: Informasi disimpan dengan aman dan hanya dapat diakses oleh staf yang berwenang.</li>
-                <li>Penggunaan Informasi: Informasi digunakan untuk perawatan medis, administrasi, dan penelitian yang telah disetujui.</li>
+                <li><a href="#">Kebijakan Kunjungan</a></li>
+                <li><a href="#">Kebijakan Privasi</a></li>
+                <li><a href="#">Kebijakan Pembayaran</a></li>
             </ul>
-        </section>
-
-        <section id="visitation-policy">
-            <h2>Kebijakan Kunjungan</h2>
-            <p>Kami memahami pentingnya kunjungan keluarga dan teman bagi pemulihan pasien. Berikut adalah kebijakan kunjungan kami:</p>
+            <h2>Kebijakan WHO</h2>
             <ul>
-                <li>Jam Kunjungan: Kunjungan diizinkan dari pukul 10:00 hingga 20:00 setiap hari.</li>
-                <li>Jumlah Pengunjung: Maksimal dua pengunjung diperbolehkan pada satu waktu di kamar pasien.</li>
-                <li>Kebersihan: Pengunjung diharuskan mencuci tangan sebelum dan sesudah mengunjungi pasien.</li>
-                <li>Kesehatan Pengunjung: Pengunjung dengan gejala penyakit menular diharapkan untuk menunda kunjungan mereka.</li>
+                <li><a href="#">Kebijakan WHO no...</a></li>
+                <li><a href="#">Kebijakan WHO no...</a></li>
+                <li><a href="#">Kebijakan WHO no...</a></li>
             </ul>
-        </section>
-
-        <section id="payment-policy">
-            <h2>Kebijakan Pembayaran</h2>
-            <p>Kami berusaha untuk menyediakan layanan kesehatan yang terjangkau dan transparan. Berikut adalah kebijakan pembayaran kami:</p>
+            <h2>Kebijakan Kemenkes</h2>
             <ul>
-                <li>Metode Pembayaran: Kami menerima pembayaran tunai, kartu kredit, dan transfer bank.</li>
-                <li>Asuransi: Kami bekerja sama dengan berbagai perusahaan asuransi kesehatan. Pastikan untuk membawa kartu asuransi Anda.</li>
-                <li>Pembayaran di Muka: Untuk beberapa layanan, pembayaran di muka mungkin diperlukan.</li>
-                <li>Tagihan: Tagihan akan diberikan setelah layanan selesai dan harus dibayar dalam jangka waktu yang ditentukan.</li>
+                <li><a href="#">Permenkes no....</a></li>
+                <li><a href="#">Permenkes no....</a></li>
+                <li><a href="#">Permenkes no....</a></li>
             </ul>
-        </section>
+            <h2>Kebijakan PERSI</h2>
+            <ul>
+                <li><a href="#">Perpersi no...</a></li>
+                <li><a href="#">Perpersi no...</a></li>
+                <li><a href="#">Perpersi no...</a></li>
+            </ul>
+        </div>
+        <div class="col-12 col-md-8">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control border border-dark" placeholder="Cari Kebijakan..." aria-label="Cari Kebijakan..." aria-describedby="button-addon2">
+                <button class="btn btn-outline-dark" type="button" id="button-addon2">Cari</button>
+            </div>
+            <div class="detail mb-5">
+                <h4 class="fw-bold">Kebijakan Rumah Sakit</h4>
+                <p>Kebijakan rumah sakit adalah serangkaian pedoman, peraturan, dan prosedur yang dibuat dan diterapkan oleh manajemen rumah sakit untuk mengatur berbagai aspek operasional, klinis, dan administratif dalam lingkungan rumah sakit. Kebijakan ini bertujuan untuk memastikan pelayanan kesehatan yang berkualitas, aman, efisien, dan sesuai dengan standar dan peraturan yang berlaku. Anda bisa download penjelasannya dibawah</p>
+                <button class="btn btn-primary">Download PDF</button>
+            </div>
+            <div class="detail mb-5">
+                <h4 class="fw-bold">Kebijakan WHO</h4>
+                <p>Kebijakan WHO (World Health Organization/Organisasi Kesehatan Dunia) merujuk pada berbagai pedoman, rekomendasi, dan standar yang dikeluarkan oleh WHO untuk memandu negara-negara anggota dalam meningkatkan kesehatan masyarakat secara global. Kebijakan ini mencakup berbagai aspek kesehatan, mulai dari pencegahan dan pengendalian penyakit hingga promosi kesehatan dan perawatan medis. Anda bisa download penjelasannya dibawah</p>
+                <button class="btn btn-primary">Download PDF</button>
+            </div>
+            <div class="detail mb-5">
+                <h4 class="fw-bold">Kebijakan Kemenkes</h4>
+                <p>Kebijakan Kementerian Kesehatan (Kemenkes) adalah serangkaian pedoman, peraturan, dan program yang dibuat oleh Kementerian Kesehatan Republik Indonesia untuk meningkatkan kualitas dan akses layanan kesehatan di seluruh Indonesia. Kebijakan ini mencakup berbagai aspek, termasuk pencegahan penyakit, perawatan kesehatan, pengelolaan sumber daya kesehatan, dan peningkatan kesehatan masyarakat secara umum. Anda bisa download penjelasannya dibawah</p>
+                <button class="btn btn-primary">Download PDF</button>
+            </div>
+            <div class="detail">
+                <h4 class="fw-bold">Kebijakan PERSI</h4>
+                <p>Persatuan Rumah Sakit Seluruh Indonesia (PERSI) adalah organisasi yang menaungi rumah sakit di Indonesia, baik negeri maupun swasta. PERSI berperan dalam memberikan panduan, advokasi, dan dukungan kepada anggotanya untuk meningkatkan mutu pelayanan kesehatan. Kebijakan PERSI biasanya berfokus pada penguatan manajemen rumah sakit, peningkatan kualitas layanan, dan adaptasi terhadap regulasi kesehatan yang berlaku di Indonesia. Anda bisa download penjelasannya dibawah</p>
+                <button class="btn btn-primary">Download PDF</button>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection

@@ -43,14 +43,28 @@
                     </div>
                </div>
             </div>
+            <div class="col text-center mb-2">
+               <div class="card">
+                    <div class="card-body" style="width: 100%; border:none; background:none; border: 1px solid #ababab">
+                        <h4>Materi Upskill</h4>
+                        <div class="card-text">
+                            <p>Kumpulan materi peningkatan keahlian</p>
+                        </div>
+                        <hr>
+                        <div>
+                            <a href="/materi" class="btn btn-dark btn-sm">Lihat Materi <i class="fa fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+               </div>
+            </div>
 
             @elseif(Auth::user()->id_jabatan == 2)
             <div class="col text-center mb-2">
                <div class="card">
                     <div class="card-body" style="width: 100%; border:none; background:none; border: 1px solid #ababab">
-                        <h4>SOP Poli Paru</h4>
+                        <h4>SOP Pendaftaran Pasien</h4>
                         <div class="card-text">
-                            <p>Standar Operasional Prosedur (SOP) Poli Paru Paru</p>
+                            <p>Standar Operasional Prosedur (SOP) Pendaftara Pasien</p>
                         </div>
                         <hr>
                         <div>
@@ -62,9 +76,9 @@
             <div class="col text-center mb-2">
                <div class="card">
                     <div class="card-body" style="width: 100%; border:none; background:none; border: 1px solid #ababab">
-                        <h4>SPM Poli Paru Paru</h4>
+                        <h4>Materi Upskill</h4>
                         <div class="card-text">
-                            <p>Standar Pelayanan Minimal (SPM) Poli Paru Paru</p>
+                            <p>Kumpulan materi peningkatan keahlian</p>
                         </div>
                         <hr>
                         <div>

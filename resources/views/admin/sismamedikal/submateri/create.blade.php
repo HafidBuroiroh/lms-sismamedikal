@@ -19,7 +19,7 @@
       <div class="card">
         <div class="card-header">
           <div class="card-body">
-            <form action="{{url('/sub-materi')}}" method="post">
+            <form action="{{url('/sub-materi')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3 form-group">
                     <p class="my-0 fw-bold">Pilih SOP/SPM/Course<span class="text-danger">*</span></p>

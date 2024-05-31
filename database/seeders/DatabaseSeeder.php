@@ -22,14 +22,14 @@ class DatabaseSeeder extends Seeder
                 'no_telp' => '1',
             ],[
                 'name' => 'test 1 LMS Sismamedikal',
-                'email' => 'poliparu@gmail.com',
+                'email' => 'polijantung@gmail.com',
                 'password' => bcrypt('12345678'),
                 'level' => '2',
                 'no_telp' => '1',
                 'id_jabatan'=> 1,
             ],[
                 'name' => 'test 2 LMS Sismamedikal',
-                'email' => 'polijantung@gmail.com',
+                'email' => 'pendaftaranpasien@gmail.com',
                 'password' => bcrypt('12345678'),
                 'level' => '2',
                 'no_telp' => '1',

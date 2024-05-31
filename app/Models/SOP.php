@@ -14,4 +14,8 @@ class SOP extends Model
     public function submateri(){
         return $this->hasMany(SubMateri::class, 'id_sop');
     }
+
+    public function jabatan(){
+        return $this->BelongsToMany(Jabatan::class, 'jabatan_materis', 'id_sop', 'id_jabatan');
+    }
 }

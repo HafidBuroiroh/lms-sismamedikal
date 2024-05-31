@@ -22,4 +22,8 @@ class SubMateri extends Model
     public function course(){
         return $this->belongsTo(Course::class, 'id_course');
     }
+
+    public function materi(){
+        return $this->belongsTo(MateriUmum::class, 'id_mu');
+    }
 }

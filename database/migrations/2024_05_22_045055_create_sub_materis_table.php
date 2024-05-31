@@ -16,6 +16,7 @@ return new class extends Migration
             $table->bigInteger('id_sop')->nullable();
             $table->bigInteger('id_spm')->nullable();
             $table->bigInteger('id_course')->nullable();
+            $table->bigInteger('id_mu')->nullable();
             $table->text('judul_materi');
             $table->text('description_materi');
             $table->text('link_youtube');

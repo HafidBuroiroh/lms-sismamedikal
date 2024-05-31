@@ -167,7 +167,14 @@
       });
     });
   </script>
-
+<script>
+    $(document).ready(function() {
+        $('.select2').select2({
+            placeholder: "Pilih Materi",
+            allowClear: true
+        });
+    });
+</script>
   <script>
     $(document).ready(function () {
       $(".select2-tags").select2({

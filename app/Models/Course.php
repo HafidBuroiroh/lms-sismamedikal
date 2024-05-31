@@ -14,4 +14,8 @@ class Course extends Model
     public function submateri(){
         return $this->hasMany(SubMateri::class, 'id_course');
     }
+
+    public function jabatan(){
+        return $this->BelongsToMany(Jabatan::class, 'jabatan_materis', 'id_course', 'id_jabatan');
+    }
 }

@@ -69,9 +69,10 @@ class SubMateriController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(SubMateri $subMateri)
+    public function show($id)
     {
-        //
+        $detail = SubMateri::find($id);
+        return view('admin.sismamedikal.submateri.detail', compact('detail'));
     }
 
     /**

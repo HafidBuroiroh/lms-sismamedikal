@@ -5,7 +5,9 @@ use App\Http\Controllers\SOPController;
 use App\Http\Controllers\SPMController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\JabatanController;
 use App\Http\Controllers\SubMateriController;
+use App\Http\Controllers\MateriUmumController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,6 +64,8 @@ Route::middleware(['auth:web', 'PreventBack', 'admin'])->group(function(){
     Route::resource('/spm', SPMController::class);
     Route::resource('/course', CourseController::class);
     Route::resource('/sub-materi', SubMateriController::class);
+    Route::resource('/jabatan', JabatanController::class);
+    Route::resource('/materi-umum', MateriUmumController::class);
 
     Route::get('/list-unverif', function(){
         return view('admin.sismamedikal.listunverif');

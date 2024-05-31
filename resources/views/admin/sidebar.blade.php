@@ -24,6 +24,10 @@
                 <a class="nav-link"
                     href="{{ url('/course') }}"><i class="fas fa-list"></i> <span>List Course</span></a>
             </li>
+            <li class="{{ Request::is('materi-umum') ? 'active' : '' }}">
+                <a class="nav-link"
+                    href="{{ url('/materi-umum') }}"><i class="fas fa-list"></i> <span>List Materi Umum</span></a>
+            </li>
             <li class="{{ Request::is('sub-materi') ? 'active' : '' }}">
                 <a class="nav-link"
                     href="{{ url('/sub-materi') }}"><i class="fas fa-list"></i> <span>List Sub Materi</span></a>

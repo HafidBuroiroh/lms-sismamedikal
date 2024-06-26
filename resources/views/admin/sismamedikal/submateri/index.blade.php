@@ -47,7 +47,18 @@
                       <td>{{$item->course->course}}</td>
                     @endif
                     <td>{{$item->judul_materi}}</td>
-                    <td><a href="{{url('/sub-materi',$item->id)}}" class="btn btn-primary">Detail</a></td>
+                    <td>
+                      <div class="d-flex justify-content-center gap-1">
+                        <form action="{{ url('/sub-materi', $item->id) }}" method="POST">
+                              @csrf
+                              @method('DELETE')
+                              <button type="button" class="btn btn-icon btn-danger delete" data-id="{{ $item->id }}">Delete</button>
+                          </form> 
+                          <a href="{{url('/sub-materi',$item->id)}}" class="btn btn-primary">Detail</a>
+                          <a href="{{url('/sub-materi/'.$item->id.'/edit')}}" class="btn btn-success">Edit</a>
+                          <a href="{{url('/sub-materi/pertanyaan/'.$item->id)}}" class="btn btn-info">List Pertanyaan</a>
+                      </div>
+                    </td>
                  </tr>
                  @endforeach
                 </tbody>

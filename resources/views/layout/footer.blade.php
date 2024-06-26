@@ -23,6 +23,6 @@
         </div>
       </div>
       <hr>
-      <p class="text-center">Copyright © 2022 - Sisma Medikal support by PT. Spero Mahakarya Nusantara & Jaha Nababan & Dr. Hoedhood</p>
+      <p class="text-center">Copyright © 2022 - Sisma Medikal support by PT. Spero Mahakarya Nusantara & Jaha Nababan & Hoedhood</p>
     </div>
   </section>

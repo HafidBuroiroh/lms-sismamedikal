@@ -16,6 +16,9 @@
             <a class="nav-link" aria-current="page" href="/user-dashboard">Dashboard</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/kebijakan">Kebijakan</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" aria-current="page" href="/logout">Keluar</a>
           </li>
         </ul>

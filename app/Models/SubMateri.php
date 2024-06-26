@@ -11,6 +11,10 @@ class SubMateri extends Model
     protected $table = 'sub_materis';
     protected $guarded = [];
 
+    public function pertanyaan(){
+        return $this->hasMany(Pertanyaan::class, 'id_submateri');
+    }
+
     public function sop(){
         return $this->belongsTo(SOP::class, 'id_sop');
     }

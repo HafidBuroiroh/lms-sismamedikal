@@ -15,25 +15,16 @@ class DatabaseSeeder extends Seeder
     {
         $user = [
             [
-                'name' => 'Superadmin LMS Sismamedikal',
+                'name' => 'Admin LMS Sismamedikal',
                 'email' => 'admindemo@gmail.com',
                 'password' => bcrypt('admin12345678'),
                 'level' => '1',
-                'no_telp' => '1',
-            ],[
-                'name' => 'test 1 LMS Sismamedikal',
-                'email' => 'polijantung@gmail.com',
-                'password' => bcrypt('12345678'),
-                'level' => '2',
-                'no_telp' => '1',
-                'id_jabatan'=> 1,
-            ],[
-                'name' => 'test 2 LMS Sismamedikal',
-                'email' => 'pendaftaranpasien@gmail.com',
-                'password' => bcrypt('12345678'),
-                'level' => '2',
-                'no_telp' => '1',
-                'id_jabatan' => 2,
+            ],
+            [
+                'name' => 'Superadmin LMS Sismamedikal',
+                'email' => 'suadmin@lms-medika.id',
+                'password' => bcrypt('suadmin123'),
+                'level' => '99',
             ],
         ];
         foreach ($user as $key => $value) {

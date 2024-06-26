@@ -1,0 +1,12 @@
+.card{
+    height: 100%;
+}
+.category-label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 0.75rem;
+}

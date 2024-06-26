@@ -7,6 +7,7 @@ use App\Models\SPM;
 use App\Models\Course;
 use App\Models\Jabatan;
 use App\Models\SubMateri;
+use App\Models\MateriUmum;
 use Illuminate\Http\Request;
 use App\Models\JabatanMateri;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -30,7 +31,8 @@ class JabatanController extends Controller
         $sop = SOP::all();
         $spm = SPM::all();
         $course = Course::all();
-        return view('admin.sismamedikal.jabatan.create', compact('sop', 'spm', 'course'));
+        $materi = MateriUmum::all();
+        return view('admin.sismamedikal.jabatan.create', compact('sop', 'spm', 'course', 'materi'));
     }
 
     /**
@@ -49,6 +51,7 @@ class JabatanController extends Controller
             $newJM->id_sop = $request->id_sop;
             $newJM->id_spm = $request->id_spm;
             $newJM->id_course = $request->id_course;
+            $newJM->id_mu = $request->id_mu;
             $newJM->save();
             Alert::success('Success', 'Data Tersimpan');
             return redirect('/jabatan');
@@ -61,7 +64,7 @@ class JabatanController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Jabatan $jabatan)
+    public function show($id)
     {
         $detail = Jabatan::find($id);
         return view('admin.sismamedikal.submateri.detail', compact('detail'));
@@ -70,7 +73,7 @@ class JabatanController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Jabatan $jabatan)
+    public function edit($id)
     {
         //
     }
@@ -78,7 +81,7 @@ class JabatanController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Jabatan $jabatan)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -86,7 +89,7 @@ class JabatanController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Jabatan $jabatan)
+    public function destroy($id)
     {
         //
     }

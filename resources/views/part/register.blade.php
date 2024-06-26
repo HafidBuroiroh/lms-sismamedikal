@@ -11,6 +11,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
+  
+@include('sweetalert::alert')
     <div class="parent-login">
       <div class="sub-parent-login">
         <div class="row justify-content-center h-100">
@@ -20,12 +22,12 @@
               <h5 class="cb text-primary my-3">USER REGISTER</h5>
             </div>
     
-            <form action="" method="POST" class="container fw-bold">
+            <form action="{{url('/postregister')}}" method="POST" class="container fw-bold">
               @csrf
               <div class="row pt-2">
                     <div class="col-lg-6 offset-lg-3">
                         <div class="form-floating mb-4 shadow rounded-pill">
-                        <input type="nama" class="form-control rounded-pill px-4" name="nama" required value="{{ session('email') }}"
+                        <input type="nama" class="form-control rounded-pill px-4" name="name" required value="{{ session('name') }}"
                           data-error-required="Silahkan isi kolom ini!" />
 
                             <label for="floatingInput" class="ms-4">
@@ -41,23 +43,22 @@
                                 <i class="fa fa-envelope me-3"></i> Email</label>
                         </div>
                         <div class="form-floating mb-4 shadow rounded-pill">
-                            <input type="text" class="form-control rounded-pill px-4" name="no_wa" required value="{{ session('no_wa') }}"
-                                oninput="validatePhoneNumber(this)"
-                                oninvalid="this.setCustomValidity('Nomor WhatsApp Aktif harus terdiri dari 10 - 13 angka')" />
+                            <input type="text" class="form-control rounded-pill px-4" name="no_telp" required value="{{ session('no_telp') }}"
+                                />
 
                             <label for="floatingInput" class="ms-4"><i class="fa fa-phone me-3"></i> No. Telp (WhatsApp Aktif)</label>
                         </div>
                         <div class="form-floating mb-4 shadow rounded-pill">
                         <select
                             class="form-select rounded-pill shadow px-4"
-                            id="jenisKelamin"
-                            name="jenisKelamin"
+                            id="jabatan"
+                            name="id_jabatan"
                             required
                             aria-label="Floating label select example"
                             oninvalid="this.setCustomValidity(' ');
                             $.toast({
                                 heading: 'Mohon Lakukan',
-                                text: 'Mohon Lengkapi Kolom Jenis Kelamin',
+                                text: 'Mohon Lengkapi Kolom Jabatan',
                                 icon: 'error',
                                 hideAfter: false,
                                 position: 'top-right',
@@ -65,16 +66,44 @@
                             });"
                             onchange="setCustomValidity('')"
                         >
-                            <option value="">-- Pilih --</option>
-                            <option value="Pria">Wadir Pelayanan</option>
-                            <option value="Perempuan">Wadir Umum</option>
-                            <option value="Perempuan">Bidang Penunjang Medik</option>
+                            <option selected disabled>-- Pilih --</option>
+                            @foreach($jabatan as $item)
+                            <option value="{{$item->id}}">{{$item->jabatan}}</option>
+                            @endforeach
                         </select>
                         <label for="jenisKelamin" class="ms-4"
                             ><i
                             class="fa-solid fa-up-right-and-down-left-from-center me-2"
                             ></i
                             >Pilih Jabatan <span style="color: red; font-weight:bold">*</span></label>
+                        </div> 
+                        <div class="form-floating mb-4 shadow rounded-pill">
+                        <select
+                            class="form-select rounded-pill shadow px-4"
+                            id="jk"
+                            name="jenis_kelamin"
+                            required
+                            aria-label="Floating label select example"
+                            oninvalid="this.setCustomValidity(' ');
+                            $.toast({
+                                heading: 'Mohon Lakukan',
+                                text: 'Mohon Lengkapi Kolom Jabatan',
+                                icon: 'error',
+                                hideAfter: false,
+                                position: 'top-right',
+                                loaderBg: '#9EC600'
+                            });"
+                            onchange="setCustomValidity('')"
+                        >
+                            <option selected disabled>-- Pilih --</option>
+                            <option value="P">Perempuan</option>
+                            <option value="L">Laki-Laki</option>
+                        </select>
+                        <label for="jenisKelamin" class="ms-4"
+                            ><i
+                            class="fa-solid fa-up-right-and-down-left-from-center me-2"
+                            ></i
+                            >Jenis Kelamin <span style="color: red; font-weight:bold">*</span></label>
                         </div>
                         <div class="row">
                             <div class="col form-floating mb-4">
@@ -95,7 +124,7 @@
                     </div>
                 </div>
                 <div class="button-submit-login d-flex justify-content-center">
-                <button type="submit" class="button-submit text-white"><a href="/home" class="text-white" style="text-decoration: none;">Daftar</a>
+                <button type="submit" class="button-submit text-white">Daftar
                 </button>
               </div>
             </form>

@@ -55,13 +55,17 @@
                   </tr>
                 </thead>
                 <tbody>
+                @foreach($data as $item)
                  <tr class="text-center">
-                    <td>1</td>
-                    <td>User 1</td>
-                    <td>loremipsum@gmail.com</td>
+                    <td>{{$loop->iteration}}</td>
+                    <td>{{$item->user->name}}</td>
+                    <td>{{$item->user->email}}</td>
                     <td><button class="btn btn-success">Verified</button></td>
-                    <td><button class="btn btn-primary">Cek</button></td>
+                    <td>
+                      <a href="#" class="btn btn-primary">Detail</a>
+                    </td>
                  </tr>
+                 @endforeach
                 </tbody>
               </table>
             </div>

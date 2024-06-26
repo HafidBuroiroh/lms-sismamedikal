@@ -6,7 +6,10 @@ use App\Models\SOP;
 use App\Models\SPM;
 use App\Models\Course;
 use App\Models\SubMateri;
+use App\Models\MateriUmum;
+use App\Models\Pertanyaan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class SubMateriController extends Controller
@@ -28,7 +31,8 @@ class SubMateriController extends Controller
         $sop = SOP::all();
         $spm = SPM::all();
         $course = Course::all();
-        return view('admin.sismamedikal.submateri.create', compact('sop', 'spm', 'course'));
+        $materi = MateriUmum::all();
+        return view('admin.sismamedikal.submateri.create', compact('sop', 'spm', 'course', 'materi'));
     }
 
     /**
@@ -48,6 +52,8 @@ class SubMateriController extends Controller
                 $newData->id_spm = $request->id_spm;
             }elseif ($request->id_course) {
                 $newData->id_course = $request->id_course;
+            }elseif ($request->id_mu) {
+                $newData->id_mu = $request->id_mu;
             }
             
             if ($request->hasFile('materi')) {
@@ -78,24 +84,72 @@ class SubMateriController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(SubMateri $subMateri)
+    public function edit($id)
     {
-        //
+        $data = SubMateri::find($id);
+        $sop = SOP::all();
+        $spm = SPM::all();
+        $course = Course::all();
+        $materi = MateriUmum::all();
+        return view('admin.sismamedikal.submateri.edit', compact('data', 'sop', 'spm', 'course', 'materi'));
+
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, SubMateri $subMateri)
+    public function update(Request $request, $id)
     {
-        //
+        try {
+            // dd($request);
+            $updateddata = SubMateri::find($id);
+            $updateddata->judul_materi = $request->judul_materi;
+            $updateddata->description_materi = $request->description_materi;
+            $updateddata->link_youtube = $request->link_youtube;
+            if ($request->id_sop) {
+                $updateddata->id_sop = $request->id_sop;
+            }elseif ($request->id_spm) {
+                $updateddata->id_spm = $request->id_spm;
+            }elseif ($request->id_course) {
+                $updateddata->id_course = $request->id_course;
+            }elseif ($request->id_mu) {
+                $updateddata->id_mu = $request->id_mu;
+            }
+            
+            if ($request->hasFile('materi')) {
+                $file = $request->file('materi');
+                $filename = 'Materi' . uniqid() . '.' . $file->getClientOriginalExtension();
+                $file->move(public_path('file'), $filename);
+                $updateddata->pdf = $filename;
+            }
+            
+            $updateddata->save();
+            Alert::success('Success', 'Data Tersimpan');
+            return redirect('/sub-materi');
+        } catch (\Throwable $th) {
+            Alert::error('Error', $th->getMessage());
+            return back();
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(SubMateri $subMateri)
+    public function destroy($id)
     {
-        //
+        $delete = SubMateri::find($id);
+        $filePath = 'file/' . $delete->pdf;
+        if(File::exists($filePath)){
+            File::delete($filePath);
+        }
+        $delete->delete();
+
+        return back();
+    }
+
+    public function pertanyaan($id){
+        $materi = SubMateri::find($id);
+        $tanya = Pertanyaan::where('id_submateri', $id)->get();
+        return view('admin.sismamedikal.submateri.pertanyaan', compact('tanya', 'materi'));
     }
 }

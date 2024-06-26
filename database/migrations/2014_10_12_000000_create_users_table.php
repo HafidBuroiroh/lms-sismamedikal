@@ -16,8 +16,6 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->integer('level');
-            $table->string('no_telp');
-            $table->bigInteger('id_jabatan')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

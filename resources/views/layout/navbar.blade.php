@@ -13,9 +13,6 @@
             <a class="nav-link" aria-current="page" href="/">Beranda</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="/kebijakan">Kebijakan</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" aria-current="page" href="/sopm">SPM/SOP</a>
           </li>
           <li class="nav-item">

@@ -6,11 +6,9 @@
         <div class="sidebar-brand sidebar-brand-sm">
             <a href="/">UL</a>
         </div>
+        @if(Auth::user()->level == 1)
         <ul class="sidebar-menu">
-                <li class="menu-header">Dashboard</li>
-                <li class="nav-item {{ Request::is('dashboard') ? 'active' : '' }}">
-                    <a class="nav-link {{ '' }}" href="{{ url('home') }}"><i class="fas fa-fire"></i><span>Dashboard</span></a>
-                </li>
+                
                 <li class="menu-header">SOP/SPM/Course</li>
             <li class="{{ Request::is('sop') ? 'active' : '' }}">
                 <a class="nav-link"
@@ -32,6 +30,10 @@
                 <a class="nav-link"
                     href="{{ url('/sub-materi') }}"><i class="fas fa-list"></i> <span>List Sub Materi</span></a>
             </li>
+            <li class="{{ Request::is('pertanyaan') ? 'active' : '' }}">
+                <a class="nav-link"
+                    href="{{ url('/pertanyaan') }}"><i class="fas fa-list"></i> <span>List Pertanyaan</span></a>
+            </li>
             <li class="{{ Request::is('list-unverif') ? 'active' : '' }}">
                 <a class="nav-link"
                     href="{{ url('list-unverif') }}"><i class="fas fa-user-xmark"></i> <span>List - Unverified</span></a>
@@ -46,9 +48,9 @@
                         href="{{url('jabatan')}}"><i class="fas fa-user"></i> <span>Jabatan</span></a>
                 </li>
             <li class="menu-header">Training System</li>
-                <li class="{{ Request::is('LOTC') ? 'active' : '' }}">
+                <li class="{{ Request::is('list-pelatihan') ? 'active' : '' }}">
                     <a class="nav-link"
-                        href="{{url('LOTC')}}"><i class="fas fa-graduation-cap"></i> <span>List Of Training Categories</span></a>
+                        href="{{url('list-pelatihan')}}"><i class="fas fa-graduation-cap"></i> <span>List Of Training Categories</span></a>
                 </li>
 
                 <li class="{{ Request::is('LPT') ? 'active' : '' }}">
@@ -72,5 +74,18 @@
 
                 
         </ul>
+        @else
+        <ul class="sidebar-menu">
+            <li class="menu-header">Superadmin</li>
+            <li class="{{ Request::is('list-rs') ? 'active' : '' }}">
+                <a class="nav-link"
+                    href="{{ url('list-rs') }}"><i class="fas fa-list"></i> <span>List Rumah Sakit</span></a>
+            </li>
+            <li class="{{ Request::is('kebijakan') ? 'active' : '' }}">
+                <a class="nav-link"
+                    href="{{ url('kebijakan') }}"><i class="fas fa-bullhorn"></i> <span>Kebijakan</span></a>
+            </li>
+        </ul>
+        @endif
     </aside>    
 </div>

@@ -39,7 +39,7 @@
 
         </ol>
       </nav>
-      <p class="section-leadx">List daftar responden yang sudah mengisi kuesioner dengan status unverif.</p>
+      <p class="section-leadx">List daftar user yang sudah registrasi dengan status unverif.</p>
       <div class="card">
         <div class="card-header">
           <div class="card-body">
@@ -55,13 +55,20 @@
                   </tr>
                 </thead>
                 <tbody>
+                  @foreach($data as $item)
                  <tr class="text-center">
-                    <td>1</td>
-                    <td>User 1</td>
-                    <td>loremipsum@gmail.com</td>
+                    <td>{{$loop->iteration}}</td>
+                    <td>{{$item->user->name}}</td>
+                    <td>{{$item->user->email}}</td>
                     <td><button class="btn btn-danger">Unverif</button></td>
-                    <td><button class="btn btn-primary">Cek</button></td>
+                    <td>
+                      <form action="{{url('/verif-user/'.$item->id)}}" method="post">
+                        @csrf
+                        <button type="submit" class="btn btn-primary">Verifikasi Akun</button>
+                      </form>
+                    </td>
                  </tr>
+                 @endforeach
                 </tbody>
               </table>
             </div>

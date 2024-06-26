@@ -11,6 +11,10 @@ class Jabatan extends Model
     protected $table = 'jabatans';
     protected $guarded = [];
 
+    public function user(){
+        return $this->hasMany(ProfilUser::class, 'id_jabatan');
+    }
+
     public function sop(){
         return $this->BelongsToMany(SOP::class, 'jabatan_materis', 'id_jabatan', 'id_sop');
     }

@@ -7,11 +7,7 @@
             </ol>
         </nav>
         <h2 class="text-uppercase text-center font-bold pt-3" style="font-size: 3rem; font-weight: bolder;">
-        @if(Auth::user()->id_jabatan == 1)
-            Materi Poli Jantung
-        @elseif(Auth::user()->id_jabatan == 2)
-            Materi Pendaftaran Pasien
-        @endif
+        {{$materi->judul_materi}}
         </h2>
     </div>
 </div>
@@ -26,11 +22,7 @@
         <div class="after-video mt-4">
             <h3>Penjelasan:</h3>
             <p style="text-align: justify;">
-            @if(Auth::user()->id_jabatan == 1)
-            Materi tersebut menayangkan tentang Aritmia. Aritmia adalah istilah medis yang merujuk pada gangguan irama jantung, di mana detak jantung menjadi tidak teratur, terlalu cepat (takikardia), atau terlalu lambat (bradikardia). Normalnya, detak jantung manusia berada dalam rentang 60 hingga 100 denyut per menit saat istirahat. Namun, pada orang dengan aritmia, irama jantung dapat bervariasi di luar rentang ini.
-        @elseif(Auth::user()->id_jabatan == 2)
-            Materi tersebut menayangkan tentang Pendaftaran Pasien, Pendaftaran pasien adalah proses awal terjadinya rekam medis di rumah sakit, puskesmas dan klinik, di tempat pendaftaran pasien akan di data identitas pribadi pasien serta keperluan kunjungannya ke fasyankes.
-        @endif
+            {{$materi->description_materi}}
         </p>
             <a href="#" class="btn btn-primary fw-bold">Download Materi PDF</a>
         </div>
@@ -38,14 +30,10 @@
             <div class="col-12 col-md-4">
                 <div class="card">
                     <div class="card-body">
-                        @if(Auth::user()->id_jabatan == 1)
-                        <h4 class="fw-bold">Kuisioner Poli Jantung</h4>
-                        @elseif(Auth::user()->id_jabatan == 2)
-                        <h4 class="fw-bold">Kuisioner Pendaftaran Pasien</h4>
-                        @endif
+                       <h4 class="fw-bold">Kuisioner {{$materi->judul_materi}}</h4>
                         <p class="fw-bold text-danger">Pastikan anda telah mempelajari materi dengan benar</p>
                         <hr>
-                        <a href="/kuisioner" class="btn btn-warning">Kerjakan Quiz</a>
+                        <a href="{{url('/kuisioner/'.$materi->id)}}" class="btn btn-warning">Kerjakan Quiz</a>
                     </div>
                 </div>
             </div>

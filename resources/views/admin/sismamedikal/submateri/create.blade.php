@@ -22,12 +22,13 @@
             <form action="{{url('/sub-materi')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3 form-group">
-                    <p class="my-0 fw-bold">Pilih SOP/SPM/Course<span class="text-danger">*</span></p>
+                    <p class="my-0 fw-bold">Pilih SOP/SPM/Course/Materi Umum<span class="text-danger">*</span></p>
                     <select name="" class="form-select" id="select">
                         <option selected disabled>-- Pilih --</option>
                         <option value="sop">SOP</option>
                         <option value="spm">SPM</option>
                         <option value="course">Course</option>
+                        <option value="mu">Materi Umum</option>
                     </select>
                 </div>
                 <div class="mb-3 form-group" id="sop" style="display: none;">
@@ -54,6 +55,15 @@
                         <option selected disabled>-- Pilih --</option>
                         @foreach($course as $item)
                         <option value="{{$item->id}}">{{$item->course}}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="mb-3 form-group" id="materi" style="display: none;">
+                    <p class="my-0 fw-bold">Pilih Materi Umum<span class="text-danger">*</span></p>
+                    <select name="id_course" class="form-select">
+                        <option selected disabled>-- Pilih --</option>
+                        @foreach($materi as $item)
+                        <option value="{{$item->id}}">{{$item->materi}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -92,6 +102,7 @@ document.getElementById('select').addEventListener('change', function() {
     document.getElementById('sop').style.display = 'none';
     document.getElementById('spm').style.display = 'none';
     document.getElementById('course').style.display = 'none';
+    document.getElementById('materi').style.display = 'none';
     document.getElementById('form-materi').style.display = 'none';
     document.getElementById('form-deskripsi').style.display = 'none';
     document.getElementById('form-link').style.display = 'none';
@@ -104,9 +115,11 @@ document.getElementById('select').addEventListener('change', function() {
         document.getElementById('spm').style.display = 'block';
     } else if (value === 'course') {
         document.getElementById('course').style.display = 'block';
+    }else if (value === 'mu') {
+        document.getElementById('materi').style.display = 'block';
     }
 
-    if (value === 'sop' || value === 'spm' || value === 'course') {
+    if (value === 'sop' || value === 'spm' || value === 'course'|| value === 'mu') {
         document.getElementById('form-materi').style.display = 'block';
         document.getElementById('form-deskripsi').style.display = 'block';
         document.getElementById('form-link').style.display = 'block';

@@ -16,14 +16,14 @@ class DatabaseSeeder extends Seeder
         $user = [
             [
                 'name' => 'Admin LMS Sismamedikal',
-                'email' => 'admindemo@gmail.com',
-                'password' => bcrypt('admin12345678'),
+                'email' => 'admin@gmail.com',
+                'password' => bcrypt('12345678'),
                 'level' => '1',
             ],
             [
                 'name' => 'Superadmin LMS Sismamedikal',
-                'email' => 'suadmin@lms-medika.id',
-                'password' => bcrypt('suadmin123'),
+                'email' => 'superadmin@gmail.com',
+                'password' => bcrypt('12345678'),
                 'level' => '99',
             ],
         ];

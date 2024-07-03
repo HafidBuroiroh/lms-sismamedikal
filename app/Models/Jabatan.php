@@ -15,19 +15,19 @@ class Jabatan extends Model
         return $this->hasMany(ProfilUser::class, 'id_jabatan');
     }
 
-    public function sop(){
-        return $this->BelongsToMany(SOP::class, 'jabatan_materis', 'id_jabatan', 'id_sop');
+    public function sops(){
+        return $this->belongsToMany(SOP::class, 'jabatan_sops');
     }
 
-    public function spm(){
-        return $this->BelongsToMany(SPM::class, 'jabatan_materis', 'id_jabatan', 'id_spm');
+    public function spms(){
+        return $this->belongsToMany(SPM::class, 'jabatan_spms');
     }
 
-    public function course(){
-        return $this->BelongsToMany(Course::class, 'jabatan_materis', 'id_jabatan', 'id_course');
+    public function courses(){
+        return $this->belongsToMany(Course::class, 'jabatan_courses');
     }
 
-    public function materi(){
-        return $this->BelongsToMany(MateriUmum::class, 'jabatan_materis', 'id_jabatan', 'id_mu');
+    public function materiUmums(){
+        return $this->belongsToMany(MateriUmum::class, 'jabatan_materi_umums');
     }
 }

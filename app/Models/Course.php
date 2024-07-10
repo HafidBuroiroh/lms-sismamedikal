@@ -15,7 +15,11 @@ class Course extends Model
         return $this->hasMany(SubMateri::class, 'id_course');
     }
 
-    public function jabatan(){
-        return $this->BelongsToMany(Jabatan::class, 'jabatan_materis', 'id_course', 'id_jabatan');
+    // public function jabatan(){
+    //     return $this->BelongsToMany(Jabatan::class, 'jabatan_materis', 'id_course', 'id_jabatan');
+    // }
+
+    public function jabatans(){
+        return $this->belongsToMany(Jabatan::class, 'jabatan_courses', 'id_course', 'id_jabatan');
     }
 }

@@ -8,10 +8,12 @@ use App\Http\Controllers\FrontController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\JabatanController;
+use App\Http\Controllers\KebijakanController;
 use App\Http\Controllers\PelatihanController;
 use App\Http\Controllers\SubMateriController;
 use App\Http\Controllers\MateriUmumController;
 use App\Http\Controllers\PertanyaanController;
+use App\Http\Controllers\RumahSakitController;
 
 /*
 |--------------------------------------------------------------------------
@@ -93,12 +95,15 @@ Route::middleware(['auth:web', 'PreventBack', 'admin'])->group(function(){
 
 
 Route::middleware(['auth:web', 'PreventBack', 'suadmin'])->group(function(){
-    Route::get('/list-rs', function(){
-        return view('suadmin.listrs');
-    })->name('list-rs');
-    Route::get('/kebijakan', function(){
-        return view('suadmin.kebijakan');
-    })->name('kebijakan');
+    // Route::get('/list-rs', function(){
+    //     return view('suadmin.listrs');
+    // })->name('list-rs');
+    // Route::get('/kebijakan', function(){
+    //     return view('suadmin.kebijakan');
+    // })->name('kebijakan');
+    
+    Route::resource('/rs', RumahSakitController::class);
+    Route::resource('/kebijakan', KebijakanController::class);
 });
 
 Route::get('/export-template', [PertanyaanController::class, 'exportTemplate']);

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->text('judul');
             $table->text('deskripsi');
             $table->string('file');
+            $table->integer('status')->default('1');
             $table->timestamps();
         });
     }

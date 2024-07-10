@@ -41,16 +41,16 @@
                     <td>{{$loop->iteration}}</td>
                     <td>{{$item->jabatan}}</td>
                     <td><div class="d-flex justify-content-center gap-1">
-                        @foreach($item->sop as $sop)
+                        @foreach($item->sops as $sop)
                             <button class="btn btn-primary">{{$sop->sop}}</button>
                         @endforeach
-                        @foreach($item->spm as $spm)
+                        @foreach($item->spms as $spm)
                             <button class="btn btn-primary">{{$spm->spm}}</button>
                         @endforeach
-                        @foreach($item->course as $course)
+                        @foreach($item->courses as $course)
                             <button class="btn btn-primary">{{$course->course}}</button>
                         @endforeach
-                        @foreach($item->materi as $mu)
+                        @foreach($item->materiUmums as $mu)
                             <button class="btn btn-primary">{{$mu->materi}}</button>
                         @endforeach
                     </div></td>

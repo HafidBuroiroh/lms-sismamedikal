@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('materi_umums', function (Blueprint $table) {
             $table->id();
             $table->text('materi');
+            $table->text('deskripsi');
             $table->integer('aktif')->default('1');
             $table->timestamps();
         });

@@ -33,6 +33,7 @@ class SPMController extends Controller
         try {
             $newData = new SPM();
             $newData->spm = $request->spm;
+            $newData->deskripsi = $request->deskripsi;
             $newData->aktif = 1;
             $newData->save();
 
@@ -68,6 +69,7 @@ class SPMController extends Controller
         try {
             $updateData = SPM::find($id);
             $updateData->spm = $request->spm;
+            $updateData->deskripsi = $request->deskripsi;
             $updateData->save();
 
             Alert::success('Success', 'Data Berhasil Diubah');

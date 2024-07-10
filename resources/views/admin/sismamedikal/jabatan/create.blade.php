@@ -28,37 +28,33 @@
                 <h5 class="fw-bold mb-0">Pilih Salah Satu atau lebih<span class="text-danger">*</span></h5>
                 <div class="form-group">
                     <p class="my-0 fw-bold">Pilih SOP</p>
-                    <select name="id_sop" class="form-select">
-                      <option selected disabled>Pilih</option>
-                        @foreach($sop as $item)
-                        <option value="{{$item->id}}">{{$item->sop}}</option>
+                    <select name="sops[]" class="form-select select2-tags" multiple>
+                        @foreach($sops as $sop)
+                        <option value="{{$sop->id}}">{{$sop->sop}}</option>
                         @endforeach
                     </select>
                 </div>
                 <div class="form-group my-3">
                     <p class="my-0 fw-bold">Pilih SPM</p>
-                    <select name="id_spm" class="form-select">
-                      <option selected disabled>Pilih</option>
-                        @foreach($spm as $item)
-                        <option value="{{$item->id}}">{{$item->spm}}</option>
+                    <select name="spms[]" class="form-select select2-tags" multiple>
+                        @foreach($spms as $spm)
+                        <option value="{{$spm->id}}">{{$spm->spm}}</option>
                         @endforeach
                     </select>
                 </div>
                 <div class="form-group my-3">
                     <p class="my-0 fw-bold">Pilih Course</p>
-                    <select name="id_course" class="form-select">
-                      <option selected disabled>Pilih</option>
-                        @foreach($course as $item)
-                        <option value="{{$item->id}}">{{$item->course}}</option>
+                    <select name="courses[]" class="form-select select2-tags" multiple>
+                        @foreach($courses as $course)
+                        <option value="{{$course->id}}">{{$course->course}}</option>
                         @endforeach
                     </select>
                 </div>
                 <div class="form-group my-3">
                     <p class="my-0 fw-bold">Pilih Materi Umum</p>
-                    <select name="id_mu" class="form-select">
-                      <option selected disabled>Pilih</option>
-                        @foreach($materi as $item)
-                        <option value="{{$item->id}}">{{$item->materi}}</option>
+                    <select name="materiUmums[]" class="form-select select2-tags" multiple>
+                        @foreach($materiUmums as $materiUmum)
+                        <option value="{{$materiUmum->id}}">{{$materiUmum->materi}}</option>
                         @endforeach
                     </select>
                 </div>

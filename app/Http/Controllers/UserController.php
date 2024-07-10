@@ -28,11 +28,11 @@ class UserController extends Controller
             'subject' => 'Verifikasi Akun',
         ]; 
     
-        Mail::send('verifiedemail', $mail, function($message) use ($mail){ 
-            $message->to($mail['kepada']) 
-            ->from($mail['email'], $mail['dari']) 
-            ->subject($mail['subject']); 
-        });
+        // Mail::send('verifiedemail', $mail, function($message) use ($mail){ 
+        //     $message->to($mail['kepada']) 
+        //     ->from($mail['email'], $mail['dari']) 
+        //     ->subject($mail['subject']); 
+        // });
 
         Alert::success('success', 'Akun Sudah Terverifikasi, Sistem akan mengirim notifikasi kepada pemilik akun bahwa akun sudah diverifikasi');
         return back();

@@ -14,8 +14,4 @@ class JabatanSpm extends Model
     protected $primaryKey = 'id';
 
     protected $guarded = [];
-
-    public function jabatans(){
-        return $this->belongsToMany(Jabatan::class, 'jabatan_spms');
-    }
 }

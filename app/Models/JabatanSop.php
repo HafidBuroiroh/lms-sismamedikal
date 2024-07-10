@@ -15,7 +15,5 @@ class JabatanSop extends Model
 
     protected $guarded = [];
 
-    public function jabatans(){
-        return $this->belongsToMany(Jabatan::class, 'jabatan_sops');
-    }
+    
 }

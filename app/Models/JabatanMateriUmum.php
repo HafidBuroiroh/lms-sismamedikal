@@ -14,8 +14,4 @@ class JabatanMateriUmum extends Model
     protected $primaryKey = 'id';
 
     protected $guarded = [];
-
-    public function jabatans(){
-        return $this->belongsToMany(Jabatan::class, 'jabatan_materi_umums');
-    }
 }

@@ -14,7 +14,7 @@
     <div class="section-header">
       <h1 style="width:87%">Kebijakan</h1>
       <div class="float-right">
-        <a data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="btn btn-primary btn-lg btn-icon-text">
+        <a href="{{ route('kebijakan.create') }}" class="btn btn-primary btn-lg btn-icon-text">
             <i class="mdi mdi-upload btn-icon-prepend"></i>
             Create
         </a>
@@ -22,7 +22,6 @@
     </div>
 
     <div class="section-body">
-      <p class="section-leadx">Kebijakan.</p>
       <div class="card">
         <div class="card-header">
           <div class="card-body">
@@ -36,26 +35,32 @@
                     <th class="text-center" scope="col">Aksi</th>
                   </tr>
                 </thead>
-                {{-- <tbody>
-                  @foreach($sop as $item)
+                <tbody>
+                  @foreach($kebijakans as $kebijakan)
                  <tr class="text-center">
-                    <td>{{$loop->iteration}}</td>
-                    <td>{{$item->sop}}</td>
+                    <td>{{ ($kebijakans->currentPage() - 1) * $kebijakans->perPage() + $loop->iteration }}</td>
+                    <td>{{ $kebijakan->judul ?? '-' }}</td>
+                    <td>{{ $kebijakan->deskripsi ?? '-' }}</td>
                     <td>
                       <div class="d-flex align-items-center justify-content-center gap-1">
-                          <a data-bs-toggle="modal" data-bs-target="#Edit{{$item->id}}" class="btn btn-warning btn-sm-lg text-white">Update</a>
-                          <form action="{{ url('/sop', $item->id) }}" method="POST">
+                          <a href="{{ route('kebijakan.edit', $kebijakan->id) }}" class="btn btn-warning btn-sm-lg text-white">Update</a>
+                          <form action="{{ route('kebijakan.destroy', $kebijakan->id) }}" method="POST">
                               @csrf
                               @method('DELETE')
-                              <button type="button" class="btn btn-icon btn-danger delete" data-id="{{ $item->id }}">Delete</button>
+                              <button type="button" class="btn btn-icon btn-danger delete" data-id="{{ $kebijakan->id }}">Delete</button>
                           </form>
                         </div>  
                     </td>
                  </tr>
                  @endforeach
-                </tbody> --}}
+                </tbody>
               </table>
             </div>
+
+            <div class="float-right">
+              {{ $kebijakans->appends(request()->query())->links('pagination::bootstrap-4') }}
+            </div>
+          </div>
           </div>
         </div>
       </div>

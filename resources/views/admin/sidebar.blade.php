@@ -76,14 +76,15 @@
         </ul>
         @else
         <ul class="sidebar-menu">
-            <li class="menu-header">Superadmin</li>
-            <li class="{{ Request::is('list-rs') ? 'active' : '' }}">
-                <a class="nav-link"
-                    href="{{ url('list-rs') }}"><i class="fas fa-list"></i> <span>List Rumah Sakit</span></a>
+            <li class="dropdown {{ Route::is('rs.*') ? 'active' : '' }}">
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-user"></i><span>User Manajemen</span></a>
+                <ul class="dropdown-menu" style="">
+                  <li class="{{ Route::is('rs.*') ? 'active' : '' }}"><a href="{{ route('rs.index') }}" class="nav-link">Rumah Sakit</a></li>
+                </ul>
             </li>
-            <li class="{{ Request::is('kebijakan') ? 'active' : '' }}">
+            <li class="{{ Route::is('kebijakan.*') ? 'active' : '' }}">
                 <a class="nav-link"
-                    href="{{ url('kebijakan') }}"><i class="fas fa-bullhorn"></i> <span>Kebijakan</span></a>
+                    href="{{ route('kebijakan.index') }}"><i class="fas fa-bullhorn"></i> <span>Kebijakan</span></a>
             </li>
         </ul>
         @endif

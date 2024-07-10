@@ -1,6 +1,6 @@
 @extends('admin.main')
 
-@section('title', 'List Rumah Sakit')
+@section('title', 'Rumah Sakit')
 
 @push('style')
 <link rel="stylesheet" href="{{ asset('library/datatables/media/css/jquery.dataTables.min.css') }}">
@@ -12,9 +12,9 @@
 <div class="main-content">
   <section class="section">
     <div class="section-header">
-      <h1 style="width:87%">List Rumah Sakit</h1>
+      <h1 style="width:87%">Rumah Sakit</h1>
       <div class="float-right">
-        <a data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="btn btn-primary btn-lg btn-icon-text">
+        <a href="{{ route('rs.create') }}" class="btn btn-primary btn-lg btn-icon-text">
             <i class="mdi mdi-upload btn-icon-prepend"></i>
             Create
         </a>
@@ -22,7 +22,6 @@
     </div>
 
     <div class="section-body">
-      <p class="section-leadx">List Rumah Sakit.</p>
       <div class="card">
         <div class="card-header">
           <div class="card-body">
@@ -31,32 +30,41 @@
                 <thead>
                   <tr>
                     <th class="text-center" scope="col">#</th>
-                    <th class="text-center" scope="col">Nama RS</th>
-                    <th class="text-center" scope="col">Deskripsi RS</th>
-                    <th class="text-center" scope="col">Logo RS</th>
+                    <th class="text-center" scope="col">Nama Rumah Sakit</th>
+                    <th class="text-center" scope="col">Email</th>
+                    <th class="text-center" scope="col">Logo</th>
                     <th class="text-center" scope="col">Aksi</th>
                   </tr>
                 </thead>
-                {{-- <tbody>
-                  @foreach($sop as $item)
+                <tbody>
+                  @foreach($users as $user)
                  <tr class="text-center">
-                    <td>{{$loop->iteration}}</td>
-                    <td>{{$item->sop}}</td>
+                    <td>{{ ($users->currentPage() - 1) * $users->perPage() + $loop->iteration }}</td>
+                    <td>{{ $user->name ?? '-' }}</td>
+                    <td>{{ $user->email ?? '-' }}</td>
+                    <td>
+                      <img src="/file/rumah-sakit/logo/{{ $user->profilRumahSakit->logo ?? '-' }}" alt="" width="50">
+                    </td>
                     <td>
                       <div class="d-flex align-items-center justify-content-center gap-1">
-                          <a data-bs-toggle="modal" data-bs-target="#Edit{{$item->id}}" class="btn btn-warning btn-sm-lg text-white">Update</a>
-                          <form action="{{ url('/sop', $item->id) }}" method="POST">
+                          <a href="{{ route('rs.edit', $user->id) }}" class="btn btn-warning btn-sm-lg text-white">Update</a>
+                          <form action="{{ route('rs.destroy', $user->id) }}" method="POST">
                               @csrf
                               @method('DELETE')
-                              <button type="button" class="btn btn-icon btn-danger delete" data-id="{{ $item->id }}">Delete</button>
+                              <button type="button" class="btn btn-icon btn-danger delete" data-id="{{ $user->id }}">Delete</button>
                           </form>
                         </div>  
                     </td>
                  </tr>
                  @endforeach
-                </tbody> --}}
+                </tbody>
               </table>
             </div>
+
+            <div class="float-right">
+              {{ $users->appends(request()->query())->links('pagination::bootstrap-4') }}
+            </div>
+          </div>
           </div>
         </div>
       </div>

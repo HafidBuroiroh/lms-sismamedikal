@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use App\Models\Jabatan;
 use App\Models\Pelatihan;
 use App\Models\SubMateri;
@@ -14,9 +13,12 @@ use Illuminate\Support\Facades\Auth;
 class FrontController extends Controller
 {
     public function home(){
-        $user = ProfilUser::where('id_user', Auth::id())->first();
-        $jabatan = Jabatan::where('id', $user->id_jabatan)->get();
-        return view('user.home', compact('user','jabatan'));
+        $profilUser = ProfilUser::where('id_user', Auth::id())->first();
+        $jabatans = Jabatan::where('id', $profilUser->id_jabatan)->with(['sops', 'spms', 'courses', 'materiUmums'])->get();
+        return view('user.home', compact(
+            'profilUser',
+            'jabatans',
+        ));
     }
 
     public function materisop($id){

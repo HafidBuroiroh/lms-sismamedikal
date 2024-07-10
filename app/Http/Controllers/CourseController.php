@@ -33,6 +33,7 @@ class CourseController extends Controller
         try {
             $newData = new Course();
             $newData->course = $request->course;
+            $newData->deskripsi = $request->deskripsi;
             $newData->aktif = 1;
             $newData->save();
 
@@ -69,6 +70,7 @@ class CourseController extends Controller
         try {
             $updateData = Course::find($id);
             $updateData->course = $request->course;
+            $updateData->deskripsi = $request->deskripsi;
             $updateData->save();
 
             Alert::success('Success', 'Data Berhasil Diubah');

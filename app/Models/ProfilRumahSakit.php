@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class ProfilRumahSakit extends Model
 {
     use HasFactory;
+    
+    protected $table = 'profil_rumah_sakits';
+
+    protected $primaryKey = 'id';
+
+    protected $guarded = [];
+
+    public function user(){
+        return $this->belongsTo(User::class, 'id_user');
+    }    
 }

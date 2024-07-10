@@ -11,7 +11,11 @@ class MateriUmum extends Model
     protected $table = 'materi_umums';
     protected $guarded = [];
 
-    public function jabatan(){
-        return $this->BelongsToMany(Jabatan::class, 'jabatan_materis', 'id_mu', 'id_jabatan');
+    // public function jabatan(){
+    //     return $this->BelongsToMany(Jabatan::class, 'jabatan_materis', 'id_mu', 'id_jabatan');
+    // }
+
+    public function jabatans(){
+        return $this->belongsToMany(Jabatan::class, 'jabatan_materi_umums', 'id_mu', 'id_jabatan');
     }
 }

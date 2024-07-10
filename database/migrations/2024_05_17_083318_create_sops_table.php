@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('sops', function (Blueprint $table) {
             $table->id();
             $table->text('sop');
+            $table->text('deskripsi');
             $table->integer('aktif')->default('1');
             $table->timestamps();
         });

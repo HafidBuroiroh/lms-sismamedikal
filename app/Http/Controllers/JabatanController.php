@@ -28,11 +28,11 @@ class JabatanController extends Controller
      */
     public function create()
     {
-        $sop = SOP::all();
-        $spm = SPM::all();
-        $course = Course::all();
-        $materi = MateriUmum::all();
-        return view('admin.sismamedikal.jabatan.create', compact('sop', 'spm', 'course', 'materi'));
+        $sops = SOP::all();
+        $spms = SPM::all();
+        $courses = Course::all();
+        $materiUmums = MateriUmum::all();
+        return view('admin.sismamedikal.jabatan.create', compact('sops', 'spms', 'courses', 'materiUmums'));
     }
 
     /**
@@ -42,17 +42,27 @@ class JabatanController extends Controller
     {
         try {
             // dd($request);
-            $newData = new Jabatan();
-            $newData->jabatan = $request->jabatan;
-            $newData->save();
+            // $newData = new Jabatan();
+            // $newData->jabatan = $request->jabatan;
+            // $newData->save();
 
-            $newJM = new JabatanMateri();
-            $newJM->id_jabatan = $newData->id;
-            $newJM->id_sop = $request->id_sop;
-            $newJM->id_spm = $request->id_spm;
-            $newJM->id_course = $request->id_course;
-            $newJM->id_mu = $request->id_mu;
-            $newJM->save();
+            // $newJM = new JabatanMateri();
+            // $newJM->id_jabatan = $newData->id;
+            // $newJM->id_sop = $request->id_sop;
+            // $newJM->id_spm = $request->id_spm;
+            // $newJM->id_course = $request->id_course;
+            // $newJM->id_mu = $request->id_mu;
+            // $newJM->save();
+
+            $jabatan = Jabatan::create([
+                'jabatan' => $request['jabatan'],
+            ]);
+
+            $jabatan->sops()->attach($request['sops']);
+            $jabatan->spms()->attach($request['spms']);
+            $jabatan->courses()->attach($request['courses']);
+            $jabatan->materiUmums()->attach($request['materiUmums']);
+
             Alert::success('Success', 'Data Tersimpan');
             return redirect('/jabatan');
         } catch (\Throwable $th) {

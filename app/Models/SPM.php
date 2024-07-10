@@ -15,7 +15,11 @@ class SPM extends Model
         return $this->hasMany(SubMateri::class, 'id_spm');
     }
 
-    public function jabatan(){
-        return $this->BelongsToMany(Jabatan::class, 'jabatan_materis', 'id_spm', 'id_jabatan');
+    // public function jabatan(){
+    //     return $this->BelongsToMany(Jabatan::class, 'jabatan_materis', 'id_spm', 'id_jabatan');
+    // }
+
+    public function jabatans(){
+        return $this->belongsToMany(Jabatan::class, 'jabatan_spms', 'id_spm', 'id_jabatan');
     }
 }

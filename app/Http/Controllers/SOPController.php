@@ -33,6 +33,7 @@ class SOPController extends Controller
         try {
             $newData = new SOP();
             $newData->sop = $request->sop;
+            $newData->deskripsi = $request->deskripsi;
             $newData->aktif = 1;
             $newData->save();
 
@@ -68,6 +69,7 @@ class SOPController extends Controller
         try {
             $updateData = SOP::find($id);
             $updateData->sop = $request->sop;
+            $updateData->deskripsi = $request->deskripsi;
             $updateData->save();
 
             Alert::success('Success', 'Data Berhasil Diubah');

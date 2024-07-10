@@ -33,6 +33,7 @@ class MateriUmumController extends Controller
         try {
             $newData = new MateriUmum();
             $newData->materi = $request->materi;
+            $newData->deskripsi = $request->deskripsi;
             $newData->aktif = 1;
             $newData->save();
 
@@ -68,6 +69,7 @@ class MateriUmumController extends Controller
         try {
             $updateData = MateriUmum::find($id);
             $updateData->materi = $request->materi;
+            $updateData->deskripsi = $request->deskripsi;
             $updateData->save();
 
             Alert::success('Success', 'Data Berhasil Diubah');

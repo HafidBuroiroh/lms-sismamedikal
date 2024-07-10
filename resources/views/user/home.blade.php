@@ -5,17 +5,76 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">Create SPM</h1>
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">SOP</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <div class="d-flex justify-content-center gap-1">
-            @foreach($jabatan as $item)
-                @foreach($item->sop as $sop)
-                <a href="{{url('/materi-sop/'.$sop->id)}}" class="btn btn-success btn-md">{{$sop->sop}}</a>
+        <table class="table table-bordered">
+            <tbody>
+                @foreach($jabatans as $jabatan)
+                    @foreach($jabatan->sops as $sop)
+                        <tr>
+                            <td>{{ $sop->sop ?? '-' }}</td>
+                            <td style="width: 10%;">
+                                <a href="{{url('/materi-sop/'.$sop->id)}}" class="btn btn-primary btn-sm-lg text-white"><i class="fa fa-arrow-right"></i></a>
+                            </td>
+                         </tr>
+                    @endforeach
                 @endforeach
-            @endforeach
-        </div>
+            </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="listcourse" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Course</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <table class="table table-bordered">
+            <tbody>
+                @foreach($jabatans as $jabatan)
+                    @foreach($jabatan->courses as $course)
+                        <tr>
+                            <td>{{ $course->course ?? '-' }}</td>
+                            <td style="width: 10%;">
+                                <a href="{{url('/materi-course/'.$course->id)}}" class="btn btn-primary btn-sm-lg text-white"><i class="fa fa-arrow-right"></i></a>
+                            </td>
+                         </tr>
+                    @endforeach
+                @endforeach
+            </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="listMateriUmum" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Materi Umum</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <table class="table table-bordered">
+            <tbody>
+                @foreach($jabatans as $jabatan)
+                    @foreach($jabatan->materiUmums as $materiUmum)
+                        <tr>
+                            <td>{{ $materiUmum->materi ?? '-' }}</td>
+                            <td style="width: 10%;">
+                                <a href="{{url('/materi-umum/'.$materiUmum->id)}}" class="btn btn-primary btn-sm-lg text-white"><i class="fa fa-arrow-right"></i></a>
+                            </td>
+                         </tr>
+                    @endforeach
+                @endforeach
+            </tbody>
+        </table>
       </div>
     </div>
   </div>
@@ -24,17 +83,24 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">Create SPM</h1>
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">SPM</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <div class="d-flex justify-content-center gap-1">
-            @foreach($jabatan as $item)
-                @foreach($item->spm as $spm)
-                <a href="{{url('/materi-spm/'.$spm->id)}}" class="btn btn-success btn-md">{{$spm->spm}}</a>
+        <table class="table table-bordered">
+            <tbody>
+                @foreach($jabatans as $jabatan)
+                    @foreach($jabatan->spms as $spm)
+                        <tr>
+                            <td>{{ $spm->spm ?? '-' }}</td>
+                            <td style="width: 10%;">
+                                <a href="{{url('/materi-spm/'.$spm->id)}}" class="btn btn-primary btn-sm-lg text-white"><i class="fa fa-arrow-right"></i></a>
+                            </td>
+                         </tr>
+                    @endforeach
                 @endforeach
-            @endforeach
-        </div>
+            </tbody>
+        </table>
       </div>
     </div>
   </div>
@@ -52,10 +118,10 @@
 <div style="background: url('{{asset('image/bg2.png')}}'); background-size:cover; padding-bottom:7%; padding-top:7%;">
     <div class="container">
         <div class="row">
-            @foreach($jabatan as $item)
-                @foreach($item->sop as $sop)
+            @foreach($jabatans as $jabatan)
+                @if($jabatan->sops)
                 <div class="col text-center mb-2">
-                <div class="card">
+                    <div class="card">
                         <div class="card-body" style="width: 100%; border:none; background:none; border: 1px solid #ababab">
                             <h4>SOP</h4>
                             <div class="card-text">
@@ -64,17 +130,16 @@
                             <hr>
                             <div>
                                 <a data-bs-toggle="modal" data-bs-target="#listsop" class="btn btn-dark btn-sm btn-icon-text">
-                                    <i class="mdi mdi-upload btn-icon-prepend"></i>
-                                    List SOP Anda
+                                    List SOP Anda <i class="fa fa-arrow-right"></i></a>
                                 </a>
                             </div>
                         </div>
+                    </div>
                 </div>
-                </div>
-                @endforeach
-                @foreach($item->spm as $spm)
+                @endif
+                @if($jabatan->spms)
                 <div class="col text-center mb-2">
-                <div class="card">
+                    <div class="card">
                         <div class="card-body" style="width: 100%; border:none; background:none; border: 1px solid #ababab">
                             <h4>SPM</h4>
                             <div class="card-text">
@@ -83,17 +148,16 @@
                             <hr>
                             <div>
                                 <a data-bs-toggle="modal" data-bs-target="#listspm" class="btn btn-dark btn-sm btn-icon-text">
-                                    <i class="mdi mdi-upload btn-icon-prepend"></i>
-                                    List SPM Anda
+                                    List SPM Anda <i class="fa fa-arrow-right"></i></a>
                                 </a>
                             </div>
                         </div>
+                    </div>
                 </div>
-                </div>
-                @endforeach
-                @foreach($item->course as $course)
+                @endif
+                @if($jabatan->courses)
                 <div class="col text-center mb-2">
-                <div class="card">
+                    <div class="card">
                         <div class="card-body" style="width: 100%; border:none; background:none; border: 1px solid #ababab">
                             <h4>Course</h4>
                             <div class="card-text">
@@ -101,15 +165,15 @@
                             </div>
                             <hr>
                             <div>
-                                <a href="{{url('/materi-course/'.$course->id)}}" class="btn btn-dark btn-sm">List Materi <i class="fa fa-arrow-right"></i></a>
+                                <a data-bs-toggle="modal" data-bs-target="#listcourse" class="btn btn-dark btn-sm">List Materi <i class="fa fa-arrow-right"></i></a>
                             </div>
                         </div>
+                    </div>
                 </div>
-                </div>
-                @endforeach
-                @foreach($item->materi as $mu)
+                @endif
+                @if($jabatan->materiUmums)
                 <div class="col text-center mb-2">
-                <div class="card">
+                    <div class="card">
                         <div class="card-body" style="width: 100%; border:none; background:none; border: 1px solid #ababab">
                             <h4>Materi Umum</h4>
                             <div class="card-text">
@@ -117,14 +181,14 @@
                             </div>
                             <hr>
                             <div>
-                                <a href="{{url('/materi-umum/'.$mu->id)}}" class="btn btn-dark btn-sm">List Materi <i class="fa fa-arrow-right"></i></a>
+                                <a data-bs-toggle="modal" data-bs-target="#listMateriUmum" class="btn btn-dark btn-sm">List Materi <i class="fa fa-arrow-right"></i></a>
                             </div>
                         </div>
+                    </div>
                 </div>
-                </div>
-                @endforeach
+                @endif
             @endforeach
         </div>
     </div>
 </div>
-  @endsection
+@endsection

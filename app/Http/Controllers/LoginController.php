@@ -39,14 +39,14 @@ class LoginController extends Controller
             $user = auth()->user();
             $profil = ProfilUser::where('id_user', auth()->user()->id)->first();
             if(auth()->user()->level == 1){
-                return redirect('/sop');
+                return redirect()->route('sop.index');
             }elseif($user->level == 2 && $profil->verification == 'verified'){
                 return redirect('/home');
             }elseif($user->level == 2 && $profil->verification == 'unverif'){
                 Alert::info('info', 'Akun Anda Belum Diverifikasi Admin');
                 return back();
             }elseif(auth()->user()->level == 99){
-                return redirect('/list-rs');
+                return redirect()->route('rs.index');
             }
         }else{
             Alert::error('Error', 'Email or Password incorect');
@@ -82,11 +82,11 @@ class LoginController extends Controller
                 'subject' => 'Registrasi',
             ]; 
         
-            Mail::send('sendemail', $mail, function($message) use ($mail){ 
-                $message->to($mail['kepada']) 
-                ->from($mail['email'], $mail['dari']) 
-                ->subject($mail['subject']); 
-            });
+            // Mail::send('sendemail', $mail, function($message) use ($mail){ 
+            //     $message->to($mail['kepada']) 
+            //     ->from($mail['email'], $mail['dari']) 
+            //     ->subject($mail['subject']); 
+            // });
             Alert::success('success', 'Pendaftaran Berhasil! Cek Email anda');
             return redirect('/login');
         } catch (\Throwable $th) {

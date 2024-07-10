@@ -25,6 +25,10 @@
                         <p class="text-danger">{{ $message }}</p>
                 @enderror
             </div>
+            <div class="form-group">
+              <p class="my-0 fw-bold">Deskripsi<span class="text-danger">*</span></p>
+              <textarea name="deskripsi" class="form-control" col="5"></textarea>
+            </div>
             <input type="hidden" name="aktif" value="1">
             <div class="modal-footer gap-1">
             <button type="button" class="btn btn-outline-warning btn-icon-text" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
@@ -52,6 +56,10 @@
                   <div class="form-group">
                       <p class="fw-bold">SOP Name<span class="text-danger">*</span></p>
                       <input type="text" class="form-control" value="{{ $item->sop }}" id="exampleInputUsername1" placeholder="Input SOP Name..." name="sop">
+                  </div>
+                  <div class="form-group">
+                    <p class="my-0 fw-bold">Deskripsi<span class="text-danger">*</span></p>
+                    <textarea name="deskripsi" class="form-control" col="5">{{ $item->deskripsi }}</textarea>
                   </div>
                   <div class="modal-footer gap-1">
                   <button type="button" class="btn btn-outline-warning btn-icon-text" data-bs-dismiss="modal" aria-label="Close">Cancel</button>

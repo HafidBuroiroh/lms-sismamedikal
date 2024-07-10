@@ -60,7 +60,7 @@
                 </div>
                 <div class="mb-3 form-group" id="materi" style="display: none;">
                     <p class="my-0 fw-bold">Pilih Materi Umum<span class="text-danger">*</span></p>
-                    <select name="id_course" class="form-select">
+                    <select name="id_mu" class="form-select">
                         <option selected disabled>-- Pilih --</option>
                         @foreach($materi as $item)
                         <option value="{{$item->id}}">{{$item->materi}}</option>

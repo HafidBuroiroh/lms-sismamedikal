@@ -44,7 +44,9 @@
                     @elseif($item->id_spm)
                       <td>{{$item->spm->spm}}</td>
                     @elseif($item->id_course)
-                      <td>{{$item->course->course}}</td>
+                      <td>{{$item->course->course ?? '-'}}</td>
+                    @elseif($item->id_mu)
+                      <td>{{$item->materi->materi ?? '-'}}</td>
                     @endif
                     <td>{{$item->judul_materi}}</td>
                     <td>

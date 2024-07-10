@@ -10,9 +10,13 @@ class Result extends Model
     use HasFactory;
     protected $table = 'results';
     protected $guarded = [];
-    
-    public function pertanyaan(){
-        return $this->belongsTo(Pertanyaan::class, 'id_pertanyaan');
+
+    public function submateri(){
+        return $this->belongsTo(SubMateri::class, 'id_submateri');
+    }
+
+    public function jawabans(){
+        return $this->hasMany(Jawaban::class, 'id_result');
     }
     
     public function user(){

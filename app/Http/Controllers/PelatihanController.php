@@ -50,7 +50,7 @@ class PelatihanController extends Controller
 
             $newdata->save();
             Alert::success('success', 'Data Tersimpan');
-            return redirect('/pelatihan');
+            return redirect('/list-pelatihan');
 
 
         } catch (\Throwable $th) {

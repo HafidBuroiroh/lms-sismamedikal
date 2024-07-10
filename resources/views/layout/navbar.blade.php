@@ -9,17 +9,36 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto gap-2 gap-md-3 fw-semibold">
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="/">Beranda</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="/sopm">SPM/SOP</a>
-          </li>
+          @if(Auth::user())
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/home">Beranda</a>
+            </li>
+          @else
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/">Beranda</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/sopm">SPM/SOP</a>
+            </li>
+          @endif
           <li class="nav-item">
             <a class="nav-link" aria-current="page" href="/pelatihan">Pelatihan</a>
           </li>
-          <a class="btn btn-daftar fw-semibold fs-6" aria-current="page" href="/register">Daftar</a>
-          <a class="btn btn-login fw-semibold fs-6" aria-current="page" href="/login">Login</a>
+          @if(Auth::user())
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                {{ Auth::user()->email }}
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/user-dashboard">Profile</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="/logout">Logout</a></li>
+              </ul>
+            </li>
+          @else
+            <a class="btn btn-daftar fw-semibold fs-6" aria-current="page" href="/register">Daftar</a>
+            <a class="btn btn-login fw-semibold fs-6" aria-current="page" href="/login">Login</a>
+          @endif
         </ul>
       </div>
     </div>

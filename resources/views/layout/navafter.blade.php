@@ -13,13 +13,17 @@
             <a class="nav-link" aria-current="page" href="/home">Beranda</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="/user-dashboard">Dashboard</a>
+            <a class="nav-link" aria-current="page" href="/pelatihan">Pelatihan</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="/kebijakan">Kebijakan</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="/logout">Keluar</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              {{ Auth::user()->email }}
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/user-dashboard">Profile</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="/logout">Logout</a></li>
+            </ul>
           </li>
         </ul>
       </div>

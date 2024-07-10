@@ -1,6 +1,6 @@
-@extends('layout.mainafter')
+@extends('layout.main')
 @section('title', '- Kuisioner')
-@section('mainafter')
+@section('main')
 <div style="background: url('{{asset('image/bg2.png')}}'); background-size:cover; padding-bottom:7%; padding-top:3%;">
     <div class="container">
         <div class="row">

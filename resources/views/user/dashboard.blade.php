@@ -1,6 +1,6 @@
-@extends('layout.mainafter')
+@extends('layout.main')
 @section('title', '- Dashboard')
-@section('mainafter')
+@section('main')
 <div class="container">
 
     <div class="row">

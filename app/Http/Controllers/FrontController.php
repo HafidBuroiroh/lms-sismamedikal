@@ -97,8 +97,34 @@ class FrontController extends Controller
         }
     }
 
-    public function pelatihan(){
-        $data = Pelatihan::all();
+    public function pelatihan(Request $request){
+        $pelatihan = Pelatihan::query();
+
+        if ($request->filled('search')) {
+            $keyword = $request->input('search');
+            $pelatihan->where(function($query) use ($keyword) {
+                $query->where('judul', 'like', '%'.$keyword.'%')
+                      ->orWhere('deskripsi', 'like', '%'.$keyword.'%');
+            });
+        }
+
+        if ($request->filled('category')) {
+            $categories = (array) $request->input('category');
+            $pelatihan->whereIn('kategori', $categories);
+        }
+
+        if ($request->filled('certification')) {
+            $certifications = $request->input('certification');
+            $pelatihan->where('sertifikat', $certifications);
+        }
+
+        if ($request->filled('biaya')) {
+            $biayaFree = $request->input('biaya');
+            $pelatihan->where('biaya', $biayaFree);
+        }
+
+        $data = $pelatihan->paginate(9);
+
         return view('part.pelatihan', compact('data'));
     }
 }

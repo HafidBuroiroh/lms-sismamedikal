@@ -120,9 +120,9 @@ class RumahSakitController extends Controller
 
     public function destroy($id)
     {
-        $kebijakan = Kebijakan::find($id);
+        $user = User::find($id);
 
-        $kebijakan->update([
+        $user->update([
             'status' => 0,
         ]);
 

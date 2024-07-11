@@ -148,8 +148,45 @@ class SubMateriController extends Controller
     }
 
     public function pertanyaan($id){
+        $materi = SubMateri::with('pertanyaans')->find($id);
+        return view('admin.sismamedikal.submateri.pertanyaan.index', compact('materi'));
+    }
+
+    public function pertanyaanCreate($id){
         $materi = SubMateri::find($id);
         $tanya = Pertanyaan::where('id_submateri', $id)->get();
-        return view('admin.sismamedikal.submateri.pertanyaan', compact('tanya', 'materi'));
+        return view('admin.sismamedikal.submateri.pertanyaan.create', compact('tanya', 'materi'));
+    }
+
+    public function pertanyaanStore(Request $request, $id)
+    {
+        $data = $request->validate([
+            'pertanyaan.*' => 'required',
+            'option_1.*' => 'required',
+            'option_2.*' => 'required',
+            'option_3.*' => 'required',
+            'option_4.*' => 'required',
+            'option_5.*' => 'required',
+            'true_option.*' => 'required',
+        ]);
+        try {
+            foreach ($data['pertanyaan'] as $index => $pertanyaan) {
+                Pertanyaan::create([
+                    'id_submateri' => $request->id_submateri,
+                    'pertanyaan' => $pertanyaan,
+                    'option_1' => $data['option_1'][$index],
+                    'option_2' => $data['option_2'][$index],
+                    'option_3' => $data['option_3'][$index],
+                    'option_4' => $data['option_4'][$index],
+                    'option_5' => $data['option_5'][$index],
+                    'true_option' => $data['true_option'][$index],
+                ]);
+            }
+            Alert::success('success', 'Data Tersimpan');
+            return redirect()->route('sub-materi.pertanyaan', $id);
+        } catch (\Throwable $th) {
+            Alert::error('error', $th->getMessage());
+            return back();
+        }
     }
 }

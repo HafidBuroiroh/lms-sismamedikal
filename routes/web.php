@@ -49,8 +49,9 @@ Route::middleware(['auth:web', 'PreventBack', 'user'])->group(function(){
     Route::get('/materi-spm/{id}',[FrontController::class, 'materispm']);
     Route::get('/materi-course/{id}',[FrontController::class, 'matericourse']);
     Route::get('/materi-umum/{id}',[FrontController::class, 'materiumum']);
-    Route::get('/submateri/{id}',[FrontController::class, 'submateri']);
-    Route::get('/kuisioner/{id}',[FrontController::class, 'kuisioner']);
+    Route::get('/submateri/{id}',[FrontController::class, 'submateri'])->name('user.submateri');
+    Route::get('/kuisioner/pertanyaan/{id}',[FrontController::class, 'kuisioner'])->name('kusioner.pertanyaan');
+    Route::post('/kuisioner/pertanyaan/{id}/store',[FrontController::class, 'kuisionerStore'])->name('kusioner.pertanyaan.store');
     Route::post('/kuisionerpost',[FrontController::class, 'kuisionerpost']);
     
     Route::get('/kuisioner', function () {
@@ -68,7 +69,9 @@ Route::middleware(['auth:web', 'PreventBack', 'admin'])->group(function(){
     Route::resource('/spm', SPMController::class);
     Route::resource('/course', CourseController::class);
     Route::resource('/sub-materi', SubMateriController::class);
-    Route::get('/sub-materi/pertanyaan/{id}', [SubMateriController::class, 'pertanyaan']);
+    Route::get('/sub-materi/pertanyaan/{id}', [SubMateriController::class, 'pertanyaan'])->name('sub-materi.pertanyaan');
+    Route::get('/sub-materi/pertanyaan/{id}/create', [SubMateriController::class, 'pertanyaanCreate'])->name('sub-materi.pertanyaan.create');
+    Route::post('/sub-materi/pertanyaan/{id}/store', [SubMateriController::class, 'pertanyaanStore'])->name('sub-materi.pertanyaan.store');
     Route::resource('/jabatan', JabatanController::class);
     Route::resource('/materi-umum', MateriUmumController::class);
     Route::resource('/pertanyaan', PertanyaanController::class);

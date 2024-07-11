@@ -15,7 +15,7 @@ class Pertanyaan extends Model
         return $this->belongsTo(SubMateri::class, 'id_submateri');
     }
     
-    public function result(){
-        return $this->hasMany(Result::class, 'id_user');
+    public function jawabans(){
+        return $this->hasMany(Jawaban::class, 'id_pertanyaan');
     }
 }

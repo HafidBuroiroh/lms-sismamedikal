@@ -34,10 +34,12 @@
     <div class="section-header justify-content-between">
       <h1 style="">Pertanyaan</h1>
       <div>
-        <a href="/pertanyaan/create" class="btn btn-primary btn-lg btn-icon-text">
-            <i class="mdi mdi-upload btn-icon-prepend"></i>
-            Create
+        @if(count($materi->pertanyaans) == 0)
+        <a href="{{ route('sub-materi.pertanyaan.create', $materi->id) }}" class="btn btn-primary btn-lg btn-icon-text">
+          <i class="mdi mdi-upload btn-icon-prepend"></i>
+          Create
         </a>
+        @endif
         <a href="{{url('/export-template')}}" class="btn btn-lg btn-success">export</a>
         <a data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="btn btn-info btn-lg btn-icon-text">
             <i class="mdi mdi-upload btn-icon-prepend"></i>
@@ -63,7 +65,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach($tanya as $item)
+                  @foreach($materi->pertanyaans as $item)
                  <tr class="text-center">
                     <td>{{$loop->iteration}}</td>
                     <td>{{$item->pertanyaan}}</td>

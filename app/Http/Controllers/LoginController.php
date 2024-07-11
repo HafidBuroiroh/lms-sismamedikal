@@ -22,7 +22,7 @@ class LoginController extends Controller
     public function postlogin(Request $request){
         $this->validate($request, [
             'email' => 'required|email|exists:users,email',
-            'password' => 'required|min:8',
+            'password' => 'required',
         ],[
             'email' => 'Email cant be null',
             'password' => 'Password cant be null',

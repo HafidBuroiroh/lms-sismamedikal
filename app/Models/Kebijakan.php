@@ -14,4 +14,8 @@ class Kebijakan extends Model
     protected $primaryKey = 'id';
 
     protected $guarded = [];
+
+    public function jabatan(){
+        return $this->belongsTo(Jabatan::class, 'id_jabatan');
+    }
 }

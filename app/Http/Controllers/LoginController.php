@@ -46,7 +46,7 @@ class LoginController extends Controller
                 Alert::info('info', 'Akun Anda Belum Diverifikasi Admin');
                 return back();
             }elseif(auth()->user()->level == 99){
-                return redirect()->route('rs.index');
+                return redirect()->route('superadmin.rs.index');
             }
         }else{
             Alert::error('Error', 'Email or Password incorect');

@@ -11,18 +11,21 @@
         <ul class="navbar-nav ms-auto gap-2 gap-md-3 fw-semibold">
           @if(Auth::user())
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="/home">Beranda</a>
+              <a class="nav-link {{ Route::is('home') ? 'fw-bold text-primary' : '' }}" aria-current="page" href="/home">Beranda</a>
             </li>
           @else
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="/">Beranda</a>
+              <a class="nav-link {{ Request::is('/') ? 'fw-bold text-primary' : '' }}" aria-current="page" href="/">Beranda</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="/sopm">SPM/SOP</a>
+              <a class="nav-link {{ Request::is('sopm') ? 'fw-bold text-primary' : '' }}" aria-current="page" href="/sopm">SPM/SOP</a>
             </li>
           @endif
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="/pelatihan">Pelatihan</a>
+            <a class="nav-link {{ Request::is('pelatihan') ? 'fw-bold text-primary' : '' }}" aria-current="page" href="/pelatihan">Pelatihan</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {{ Request::is('kebijakan') ? 'fw-bold text-primary' : '' }}" aria-current="page" href="/kebijakan">Kebijakan</a>
           </li>
           @if(Auth::user())
             <li class="nav-item dropdown">

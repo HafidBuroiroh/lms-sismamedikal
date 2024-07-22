@@ -6,7 +6,7 @@
     <div class="col-12 col-md-4">
             <h2>Filter Pelatihan</h2>
             <form action="{{ url('/pelatihan') }}" method="GET">
-                <div class="form-group mb-3">
+                <div class="form-group mb-3 mt-3">
                     <input type="text" class="form-control border border-dark" name="search" placeholder="Cari Pelatihan..." value="{{ request('search') }}">
                 </div>
                 <div class="form-group mb-3">

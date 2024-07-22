@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Result;
 use App\Models\Jabatan;
+use App\Models\JabatanSop;
 use App\Models\Jawaban;
+use App\Models\Kebijakan;
 use App\Models\Pelatihan;
 use App\Models\SubMateri;
 use App\Models\Pertanyaan;
@@ -126,5 +128,21 @@ class FrontController extends Controller
         $data = $pelatihan->paginate(9);
 
         return view('part.pelatihan', compact('data'));
+    }
+
+    public function kebijakan(Request $request) {
+        $kebijakan = Kebijakan::query();
+
+        if ($request->filled('search')) {
+            $keyword = $request->input('search');
+            $kebijakan->where(function($query) use ($keyword) {
+                $query->where('judul', 'like', '%'.$keyword.'%')
+                      ->orWhere('deskripsi', 'like', '%'.$keyword.'%');
+            });
+        }
+
+        $kebijakans = $kebijakan->latest()->paginate(9);
+
+        return view('part.kebijakan', compact('kebijakans'));
     }
 }

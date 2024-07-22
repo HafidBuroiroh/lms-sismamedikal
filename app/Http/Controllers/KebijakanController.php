@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Jabatan;
 use App\Models\Kebijakan;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -10,7 +11,7 @@ class KebijakanController extends Controller
 {
     public function index()
     {
-        $kebijakans = Kebijakan::where('status', 1)->paginate(10);
+        $kebijakans = Kebijakan::with('jabatan')->where('status', 1)->paginate(10);
         return view('suadmin.kebijakan.index', compact(
             'kebijakans',
         ));
@@ -18,27 +19,30 @@ class KebijakanController extends Controller
 
     public function create()
     {
-        return view('suadmin.kebijakan.create');
+        $jabatans = Jabatan::all();
+        return view('suadmin.kebijakan.create', compact('jabatans'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
+            'id_jabatan' => 'required',
             'judul' => 'required',
             'deskripsi' => 'required',
-            'file' => 'required|file',
+            'link' => 'required',
         ]);
 
         $kebijakan = [
+            'id_jabatan' => $request['id_jabatan'],
             'judul' => $request['judul'],
             'deskripsi' => $request['deskripsi'],
-            'file' => $this->handleFileUpload($request->file('file'), '/file/kebijakan/'),
+            'link' => $request['link'],
         ];
 
         Kebijakan::create($kebijakan);
 
         Alert::success('Success', 'Success');
-        return redirect()->route('kebijakan.index');
+        return redirect()->route('superadmin.kebijakan.index');
     }
 
     public function show($id)
@@ -48,36 +52,37 @@ class KebijakanController extends Controller
 
     public function edit($id)
     {
+        $jabatans = Jabatan::all();
         $kebijakan = Kebijakan::find($id);
         return view('suadmin.kebijakan.edit', compact(
             'kebijakan',
+            'jabatans',
         ));
     }
 
     public function update(Request $request, $id)
     {
         $request->validate([
+            'id_jabatan' => 'required',
             'judul' => 'required',
             'deskripsi' => 'required',
-            'file' => 'nullable|file',
+            'link' => 'required',
         ]);
 
 
         $kebijakan = Kebijakan::find($id);
 
         $kebijakans = [
+            'id_jabatan' => $request['id_jabatan'],
             'judul' => $request['judul'],
             'deskripsi' => $request['deskripsi'],
+            'link' => $request['link'],
         ];
-
-        if ($request->hasFile('file')) {
-            $kebijakans['file'] = $this->handleFileUpload($request->file('file'), 'file/kebijakan/');
-        }
 
         $kebijakan->update($kebijakans);
 
         Alert::success('Success', 'Success');
-        return redirect()->route('kebijakan.index');
+        return redirect()->route('superadmin.kebijakan.index');
     }
 
     public function destroy($id)
@@ -89,7 +94,7 @@ class KebijakanController extends Controller
         ]);
 
         Alert::success('Success', 'Success');
-        return redirect()->route('kebijakan.index');
+        return redirect()->route('superadmin.kebijakan.index');
     }
 
     private function handleFileUpload($file, $path)

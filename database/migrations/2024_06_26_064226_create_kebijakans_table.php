@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('kebijakans', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('id_jabatan')->nullable();
             $table->text('judul');
             $table->text('deskripsi');
-            $table->string('file');
+            $table->text('link');
             $table->integer('status')->default('1');
             $table->timestamps();
         });

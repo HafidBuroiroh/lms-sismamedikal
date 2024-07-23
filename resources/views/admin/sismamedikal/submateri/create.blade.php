@@ -98,7 +98,6 @@
 document.getElementById('select').addEventListener('change', function() {
     var value = this.value;
     
-    // Hide all form sections
     document.getElementById('sop').style.display = 'none';
     document.getElementById('spm').style.display = 'none';
     document.getElementById('course').style.display = 'none';
@@ -108,7 +107,6 @@ document.getElementById('select').addEventListener('change', function() {
     document.getElementById('form-link').style.display = 'none';
     document.getElementById('form-file').style.display = 'none';
 
-    // Show the selected section and common form fields
     if (value === 'sop') {
         document.getElementById('sop').style.display = 'block';
     } else if (value === 'spm') {
@@ -126,8 +124,6 @@ document.getElementById('select').addEventListener('change', function() {
         document.getElementById('form-file').style.display = 'block';
         document.getElementById('dis').disabled = false;
     }
-
-    
 });
 </script>
 @endsection

@@ -79,12 +79,12 @@
             <li class="dropdown {{ Route::is('rs.*') ? 'active' : '' }}">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-user"></i><span>User Manajemen</span></a>
                 <ul class="dropdown-menu" style="">
-                  <li class="{{ Route::is('rs.*') ? 'active' : '' }}"><a href="{{ route('rs.index') }}" class="nav-link">Rumah Sakit</a></li>
+                  <li class="{{ Route::is('rs.*') ? 'active' : '' }}"><a href="{{ route('superadmin.rs.index') }}" class="nav-link">Rumah Sakit</a></li>
                 </ul>
             </li>
             <li class="{{ Route::is('kebijakan.*') ? 'active' : '' }}">
                 <a class="nav-link"
-                    href="{{ route('kebijakan.index') }}"><i class="fas fa-bullhorn"></i> <span>Kebijakan</span></a>
+                    href="{{ route('superadmin.kebijakan.index') }}"><i class="fas fa-bullhorn"></i> <span>Kebijakan</span></a>
             </li>
         </ul>
         @endif

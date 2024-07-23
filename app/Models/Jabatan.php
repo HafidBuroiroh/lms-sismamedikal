@@ -15,6 +15,10 @@ class Jabatan extends Model
         return $this->hasMany(ProfilUser::class, 'id_jabatan');
     }
 
+    public function kebijakans(){
+        return $this->hasMany(Kebijakan::class, 'id_jabatan');
+    }
+
     public function sops(){
         return $this->belongsToMany(SOP::class, 'jabatan_sops', 'id_jabatan', 'id_sop');
     }

@@ -14,7 +14,7 @@
     <div class="section-header">
       <h1 style="width:87%">Rumah Sakit</h1>
       <div class="float-right">
-        <a href="{{ route('rs.create') }}" class="btn btn-primary btn-lg btn-icon-text">
+        <a href="{{ route('superadmin.rs.create') }}" class="btn btn-primary btn-lg btn-icon-text">
             <i class="mdi mdi-upload btn-icon-prepend"></i>
             Create
         </a>
@@ -47,8 +47,8 @@
                     </td>
                     <td>
                       <div class="d-flex align-items-center justify-content-center gap-1">
-                          <a href="{{ route('rs.edit', $user->id) }}" class="btn btn-warning btn-sm-lg text-white">Update</a>
-                          <form action="{{ route('rs.destroy', $user->id) }}" method="POST">
+                          <a href="{{ route('superadmin.rs.edit', $user->id) }}" class="btn btn-warning btn-sm-lg text-white">Update</a>
+                          <form action="{{ route('superadmin.rs.destroy', $user->id) }}" method="POST">
                               @csrf
                               @method('DELETE')
                               <button type="button" class="btn btn-icon btn-danger delete" data-id="{{ $user->id }}">Delete</button>

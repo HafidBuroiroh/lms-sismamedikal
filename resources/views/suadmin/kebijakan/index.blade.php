@@ -14,7 +14,7 @@
     <div class="section-header">
       <h1 style="width:87%">Kebijakan</h1>
       <div class="float-right">
-        <a href="{{ route('kebijakan.create') }}" class="btn btn-primary btn-lg btn-icon-text">
+        <a href="{{ route('superadmin.kebijakan.create') }}" class="btn btn-primary btn-lg btn-icon-text">
             <i class="mdi mdi-upload btn-icon-prepend"></i>
             Create
         </a>
@@ -30,8 +30,8 @@
                 <thead>
                   <tr>
                     <th class="text-center" scope="col">#</th>
+                    <th class="text-center" scope="col">Jabatan</th>
                     <th class="text-center" scope="col">Judul Kebijakan</th>
-                    <th class="text-center" scope="col">Deskripsi</th>
                     <th class="text-center" scope="col">Aksi</th>
                   </tr>
                 </thead>
@@ -39,12 +39,12 @@
                   @foreach($kebijakans as $kebijakan)
                  <tr class="text-center">
                     <td>{{ ($kebijakans->currentPage() - 1) * $kebijakans->perPage() + $loop->iteration }}</td>
+                    <td>{{ $kebijakan->jabatan->jabatan ?? '-' }}</td>
                     <td>{{ $kebijakan->judul ?? '-' }}</td>
-                    <td>{{ $kebijakan->deskripsi ?? '-' }}</td>
                     <td>
                       <div class="d-flex align-items-center justify-content-center gap-1">
-                          <a href="{{ route('kebijakan.edit', $kebijakan->id) }}" class="btn btn-warning btn-sm-lg text-white">Update</a>
-                          <form action="{{ route('kebijakan.destroy', $kebijakan->id) }}" method="POST">
+                          <a href="{{ route('superadmin.kebijakan.edit', $kebijakan->id) }}" class="btn btn-warning btn-sm-lg text-white">Update</a>
+                          <form action="{{ route('superadmin.kebijakan.destroy', $kebijakan->id) }}" method="POST">
                               @csrf
                               @method('DELETE')
                               <button type="button" class="btn btn-icon btn-danger delete" data-id="{{ $kebijakan->id }}">Delete</button>

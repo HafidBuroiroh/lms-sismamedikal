@@ -18,7 +18,7 @@
       <div class="card">
         <div class="card-header">
           <div class="card-body">
-            <form action="{{ route('rs.store') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('superadmin.rs.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group my-3">
                     <p class="my-0 fw-bold">Nama Rumah Sakit<span class="text-danger">*</span></p>

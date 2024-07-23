@@ -54,7 +54,7 @@ class RumahSakitController extends Controller
         ProfilRumahSakit::create($profilRumahSakit);
 
         Alert::success('Success', 'Success');
-        return redirect()->route('rs.index');
+        return redirect()->route('superadmin.rs.index');
     }
 
     public function show($id)
@@ -115,7 +115,7 @@ class RumahSakitController extends Controller
         $profilRumahSakit->update($profilRumahSakits);
 
         Alert::success('Success', 'Success');
-        return redirect()->route('rs.index');
+        return redirect()->route('superadmin.rs.index');
     }
 
     public function destroy($id)

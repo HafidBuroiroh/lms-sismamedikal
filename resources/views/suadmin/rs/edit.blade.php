@@ -18,7 +18,7 @@
       <div class="card">
         <div class="card-header">
           <div class="card-body">
-            <form action="{{ route('rs.update', $user->id) }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('superadmin.rs.update', $user->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="form-group my-3">

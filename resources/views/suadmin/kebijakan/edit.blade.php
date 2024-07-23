@@ -18,9 +18,18 @@
       <div class="card">
         <div class="card-header">
           <div class="card-body">
-            <form action="{{ route('kebijakan.update', $kebijakan->id) }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('superadmin.kebijakan.update', $kebijakan->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
+                <div class="mb-3 form-group">
+                  <p class="my-0 fw-bold">Pilih Jabatan<span class="text-danger">*</span></p>
+                  <select name="id_jabatan" class="form-select">
+                      <option selected disabled value="">Select</option>
+                      @foreach($jabatans as $jabatan)
+                      <option value="{{$jabatan->id}}" @if($kebijakan->id_jabatan == $jabatan->id) @selected(true) @endif>{{$jabatan->jabatan}}</option>
+                      @endforeach
+                  </select>
+                </div>
                 <div class="form-group my-3">
                     <p class="my-0 fw-bold">Judul Kebijakan<span class="text-danger">*</span></p>
                     <input type="text" name="judul" class="form-control" value="{{ $kebijakan->judul }}">
@@ -30,12 +39,9 @@
                   <textarea name="deskripsi" class="form-control" col="5">{{ $kebijakan->deskripsi }}</textarea>
                 </div>
                 <div class="form-group my-3">
-                  <p class="my-0 fw-bold">File<span class="text-danger">*</span></p>
-                  <input type="file" name="file" class="form-control" value="{{ $kebijakan->file }}">
-                  @if($kebijakan->file)
-                    <a href="/file/kebijakan/{{ $kebijakan->file }}" target="_blank">{{ $kebijakan->file }}</a>
-                  @endif
-              </div>
+                  <p class="my-0 fw-bold">Link<span class="text-danger">*</span></p>
+                  <input type="text" name="link" class="form-control" value="{{ $kebijakan->link }}">
+                </div>
                 <div class="d-flex justify-content-end gap-1 mt-5 mb-3">
                     <button type="submit" class="btn btn-primary" id="simpan">Simpan</button>
                     <a href="{{url()->previous()}}" class="btn btn-warning">Kembali</a>
